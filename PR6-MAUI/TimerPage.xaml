@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR6_MAUI.TimerPage"
+             Title="Таймер">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+
+            <Label Text="Таймер" FontSize="24" HorizontalOptions="Center" TextColor="#512BD4"/>
+
+            <TimePicker x:Name="timePicker" Format="HH:mm" HorizontalOptions="Center"/>
+
+            <Frame BackgroundColor="#DFD8F7" Padding="20" HorizontalOptions="Center">
+                <Label x:Name="timeLabel" Text="00:00:00" FontSize="48" FontAttributes="Bold" HorizontalOptions="Center"/>
+            </Frame>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button x:Name="btnStart" Text="Старт" Clicked="OnStartClicked" BackgroundColor="Green" TextColor="White"/>
+                <Button x:Name="btnStop" Text="Стоп" Clicked="OnStopClicked" BackgroundColor="Red" TextColor="White" IsEnabled="False"/>
+                <Button x:Name="btnReset" Text="Сброс" Clicked="OnResetClicked" BackgroundColor="Gray" TextColor="White"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

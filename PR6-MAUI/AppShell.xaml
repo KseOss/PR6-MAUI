@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PR6_MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PR6_MAUI"
+    Title="PR6_MAUI">
+
+    <TabBar>
+        <Tab Title="Часы">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Секундомер">
+            <ShellContent ContentTemplate="{DataTemplate local:StopwatchPage}" />
+        </Tab>
+        <Tab Title="Таймер">
+            <ShellContent ContentTemplate="{DataTemplate local:TimerPage}" />
+        </Tab>
+        <Tab Title="Таймер">
+            <ShellContent ContentTemplate="{DataTemplate local:AlarmPage}" />
+        </Tab>
+        <Tab Title="Напоминалка">
+            <ShellContent ContentTemplate="{DataTemplate local:ReminderPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

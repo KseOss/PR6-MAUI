@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR6_MAUI.AlarmPage"
+              Title="Будильник">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+
+            <Label Text="Будильник" FontSize="24" HorizontalOptions="Center" TextColor="#512BD4"/>
+
+            <TimePicker x:Name="timePicker" Format="HH:mm" HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Label Text="Включить будильник" FontSize="16"/>
+                <Switch x:Name="alarmSwitch" Toggled="OnAlarmToggled"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Дни повторения:" FontSize="18" FontAttributes="Bold"/>
+
+            <VerticalStackLayout Spacing="10">
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Понедельник" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="mondaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Вторник" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="tuesdaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Среда" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="wednesdaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Четверг" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="thursdaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Пятница" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="fridaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Суббота" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="saturdaySwitch"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Воскресенье" FontSize="14" VerticalOptions="Center"/>
+                    <Switch x:Name="sundaySwitch"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Label x:Name="statusLabel" Text="Будильник выключен" FontSize="16" HorizontalOptions="Center" TextColor="Gray"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

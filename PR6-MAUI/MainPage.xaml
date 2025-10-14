@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR6_MAUI.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+
+            <Label Text="Текущее время" FontSize="24" HorizontalOptions="Center" TextColor="#512BD4"/>
+
+            <Frame BackgroundColor="#DFD8F7" Padding="20" HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="timeLabel" FontSize="48" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label x:Name="dateLabel" FontSize="20" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Календарь" FontSize="24" HorizontalOptions="Center" TextColor="#512BD4"/>
+
+            <DatePicker x:Name="calendarPicker" Format="D" HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
