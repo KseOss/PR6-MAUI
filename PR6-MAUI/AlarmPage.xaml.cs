@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Plugin.LocalNotification;
 namespace PR6_MAUI;
 
 public partial class AlarmPage : ContentPage
@@ -25,14 +26,14 @@ public partial class AlarmPage : ContentPage
             _alarmTime = timePicker.Time;
             timePicker.IsEnabled = false;
             _timer.Start();
-            statusLabel.Text = "Будильник включен";
+            statusLabel.Text = "Р‘СѓРґРёР»СЊРЅРёРє РІРєР»СЋС‡РµРЅ";
             statusLabel.TextColor = Colors.Green;
         }
         else
         {
             timePicker.IsEnabled = true;
             _timer.Stop();
-            statusLabel.Text = "Будильник выключен";
+            statusLabel.Text = "Р‘СѓРґРёР»СЊРЅРёРє РІС‹РєР»СЋС‡РµРЅ";
             statusLabel.TextColor = Colors.Gray;
         }
     }
@@ -69,7 +70,22 @@ public partial class AlarmPage : ContentPage
 
     private async void ShowAlarmNotification()
     {
-        await DisplayAlert("Будильник", "Просыпайтесь! Время вставать!", "OK");
+        // Р”РѕР±Р°РІР»СЏРµРј РєРѕРґ СѓРІРµРґРѕРјР»РµРЅРёСЏ
+        var request = new NotificationRequest()
+        {
+            NotificationId = 1332,
+            Title = "Р‘СѓРґРёР»СЊРЅРёРє",
+            Subtitle = "РџСЂРѕСЃС‹РїР°Р№С‚РµСЃСЊ!",
+            Description = "Р’СЂРµРјСЏ РІСЃС‚Р°РІР°С‚СЊ!",
+            BadgeNumber = 42,
+            Schedule = new NotificationRequestSchedule
+            {
+                NotifyTime = DateTime.Now.AddSeconds(5),
+                NotifyRepeatInterval = TimeSpan.FromDays(1),
+            },
+        };
+        LocalNotificationCenter.Current.Show(request);
+
         alarmSwitch.IsToggled = false;
     }
 }
