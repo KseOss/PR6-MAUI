@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Plugin.LocalNotification;
 namespace PR6_MAUI;
 
 public partial class TimerPage : ContentPage
@@ -65,12 +66,25 @@ public partial class TimerPage : ContentPage
             btnStop.IsEnabled = false;
             btnReset.IsEnabled = true;
 
-            ShowNotification("������", "����� �����!");
+            ShowNotification("Таймер", "Время вышло!");
         }
     }
 
     private async void ShowNotification(string title, string message)
     {
-        await DisplayAlert(title, message, "OK");
+        // Добавляем код уведомления
+        var request = new NotificationRequest()
+        {
+            NotificationId = 1334,
+            Title = title,
+            Subtitle = title,
+            Description = message,
+            BadgeNumber = 42,
+            Schedule = new NotificationRequestSchedule
+            {
+                NotifyTime = DateTime.Now.AddSeconds(5),
+            },
+        };
+        LocalNotificationCenter.Current.Show(request);
     }
 }
