@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Plugin.LocalNotification;
 namespace PR6_MAUI;
 
 public partial class ReminderPage : ContentPage
@@ -23,7 +24,7 @@ public partial class ReminderPage : ContentPage
     {
         if (string.IsNullOrWhiteSpace(messageEntry.Text))
         {
-            DisplayAlert("Ошибка", "Введите сообщение напоминания", "OK");
+            DisplayAlert("РћС€РёР±РєР°", "Р’РІРµРґРёС‚Рµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР°РїРѕРјРёРЅР°РЅРёСЏ", "OK");
             return;
         }
 
@@ -31,7 +32,7 @@ public partial class ReminderPage : ContentPage
 
         if (reminderDateTime <= DateTime.Now)
         {
-            DisplayAlert("Ошибка", "Выберите дату и время в будущем", "OK");
+            DisplayAlert("РћС€РёР±РєР°", "Р’С‹Р±РµСЂРёС‚Рµ РґР°С‚Сѓ Рё РІСЂРµРјСЏ РІ Р±СѓРґСѓС‰РµРј", "OK");
             return;
         }
 
@@ -44,7 +45,22 @@ public partial class ReminderPage : ContentPage
         _reminders.Add(newReminder);
         UpdateRemindersList();
 
-        statusLabel.Text = $"Напоминание установлено на {reminderDateTime:dd.MM.yyyy HH:mm}";
+        // Р”РѕР±Р°РІР»СЏРµРј РєРѕРґ СѓРІРµРґРѕРјР»РµРЅРёСЏ
+        var request = new NotificationRequest()
+        {
+            NotificationId = 1333,
+            Title = "РќР°РїРѕРјРёРЅР°РЅРёРµ",
+            Subtitle = "РќР°РїРѕРјРёРЅР°РЅРёРµ",
+            Description = messageEntry.Text,
+            BadgeNumber = 42,
+            Schedule = new NotificationRequestSchedule
+            {
+                NotifyTime = reminderDateTime,
+            },
+        };
+        LocalNotificationCenter.Current.Show(request);
+
+        statusLabel.Text = $"РќР°РїРѕРјРёРЅР°РЅРёРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ РЅР° {reminderDateTime:dd.MM.yyyy HH:mm}";
         statusLabel.TextColor = Colors.Green;
 
         messageEntry.Text = string.Empty;
@@ -82,7 +98,7 @@ public partial class ReminderPage : ContentPage
 
     private async void ShowReminderNotification(string message)
     {
-        await DisplayAlert("Напоминание", message, "OK");
+        await DisplayAlert("РќР°РїРѕРјРёРЅР°РЅРёРµ", message, "OK");
     }
 }
 
@@ -91,3 +107,20 @@ public class Reminder
     public DateTime DateTime { get; set; }
     public string Message { get; set; }
 }
+
+/*
+ * var rewuest = new NotificationRequest()
+ * {
+ *  NotificationId = 1332,
+ *  Title = "Not request",
+ *  Subtitle = "Hello".
+ *  Description = "Hello",
+ *  BadgeNumber = 42,
+ *  Schedule = new NotificationRequestSchedule
+ *  {
+ *      NotifyTime = DateTime.Now.AddSecond(5),
+ *      NotifyRepeatInterval = TimeSpan.FromDays(1),
+    },
+ * };
+ * LocalNotificationCenter.Current.Show(request);
+ */
